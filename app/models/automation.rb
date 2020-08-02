@@ -4,7 +4,7 @@ require 'csv'
 require 'json'
 
 
-  class scraper
+  class automation
     @driver = Selenium::WebDriver.for :firefox
     @driver.get('https://news.ycombinator.com')
 
@@ -13,7 +13,7 @@ require 'json'
       @site_data = elements.each_with_object([]) do |item, obj|
       obj << {
         title: item.find_element(class: 'storylink').text,
-        url: item.find_element(class: 'storylink')['href']
+        link: item.find_element(class: 'storylink')['href']
         }
       end
     end
